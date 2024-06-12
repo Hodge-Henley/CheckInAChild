@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for
+import os
 import random
 import string
 from barcode import Code128
@@ -33,6 +34,10 @@ def print_tag(child_name, parent_name, unique_number):
     c.drawImage(f'static/barcodes/{unique_number}.png', 100, 650, width=200, height=100)
     c.save()
 
+def create_directories():
+    os.makedirs('static/barcodes', exist_ok=True)
+    os.makedirs('static/tags', exist_ok=True)
+
 @app.route('/')
 def index():
     return render_template('index.html')
@@ -61,4 +66,5 @@ def confirmation(number):
 
 if __name__ == '__main__':
     init_db()
+    create_directories()
     app.run(debug=True)
