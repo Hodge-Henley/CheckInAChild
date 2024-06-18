@@ -27,12 +27,24 @@ def save_to_db(child_name, parent_name, unique_number):
     conn.close()
 
 def print_tag(child_name, parent_name, unique_number):
-    c = canvas.Canvas(f"static/tags/{unique_number}.pdf", pagesize=letter)
-    c.drawString(100, 750, f"Child's Name: {child_name}")
-    c.drawString(100, 730, f"Parent/Guardian's Name: {parent_name}")
-    c.drawString(100, 710, f"Unique Number: {unique_number}")
+
+    # Create child's ticket
+    c = canvas.Canvas(f"static/tags/{unique_number}_child.pdf", pagesize=letter)
+    c.drawString(100, 750, f"Child's Ticket")
+    c.drawString(100, 730, f"Child's Name: {child_name}")
+    c.drawString(100, 710, f"Parent/Guardian's Name: {parent_name}")
+    c.drawString(100, 690, f"Unique Number: {unique_number}")
     c.drawImage(f'static/barcodes/{unique_number}.png', 100, 650, width=200, height=100)
     c.save()
+
+    # Create parent's ticket
+    p = canvas.Canvas(f"static/tags/{unique_number}_parent.pdf", pagesize=letter)
+    p.drawString(100, 750, f"Parent's Ticket")
+    p.drawString(100, 730, f"Child's Name: {child_name}")
+    p.drawString(100, 710, f"Parent/Guardian's Name: {parent_name}")
+    p.drawString(100, 690, f"Unique Number: {unique_number}")
+    p.drawImage(f'static/barcodes/{unique_number}.png', 100, 650, width=200, height=100)
+    p.save()
 
 def create_directories():
     os.makedirs('static/barcodes', exist_ok=True)
