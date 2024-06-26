@@ -16,5 +16,7 @@ an application for check-in and pickup with security
 
 ![checkinbarcode](imgs/checkinbarcode.png)
 
+![samplevideo](imgs/sampe_video.mov)
+
 ## End Goal 
 To print out one ticket for child, one for the parent. This allows for secure pickup- matching the unqiue pickup number from the parent to the child. 
