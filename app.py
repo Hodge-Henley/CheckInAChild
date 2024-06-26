@@ -67,7 +67,7 @@ def checkin():
     # Save data to database
     save_to_db(child_name, parent_name, unique_number)
 
-    # Print tag
+    # Print tags
     print_tag(child_name, parent_name, unique_number)
 
     return redirect(url_for('confirmation', number=unique_number))
@@ -75,6 +75,20 @@ def checkin():
 @app.route('/confirmation/<number>')
 def confirmation(number):
     return render_template('confirmation.html', number=number)
+
+@app.route('/print_labels/<number>')
+def print_labels(number):
+    conn = sqlite3.connect('checkin.db')
+    c = conn.cursor()
+    c.execute("SELECT child_name, parent_name FROM checkins WHERE unique_number=?", (number,))
+    row = c.fetchone()
+    conn.close()
+    
+    if row:
+        child_name, parent_name = row
+        return render_template('print_labels.html', number=number, child_name=child_name, parent_name=parent_name)
+    else:
+        return "Record not found", 404
 
 if __name__ == '__main__':
     init_db()
