@@ -7,6 +7,9 @@
     <h1>Check-In Confirmation</h1>
     <p>Your unique number is: {{ number }}</p>
     <img src="/static/barcodes/{{ number }}.png" alt="Barcode">
+    <p>Download your tickets:</p>
+    <a href="/static/tags/{{ number }}_child.pdf" download>Child's Ticket</a><br>
+    <a href="/static/tags/{{ number }}_parent.pdf" download>Parent's Ticket</a>
 </body>
 </html>
 
