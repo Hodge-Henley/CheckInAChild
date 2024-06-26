@@ -16,7 +16,7 @@ an application for check-in and pickup with security
 
 ![checkinbarcode](imgs/checkinbarcode.png)
 
-### See it in action! 
+## See it in action! 
 
 ![samplevideo](imgs/checkin.gif)
 
