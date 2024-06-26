@@ -10,7 +10,7 @@
     <p>Download your tickets:</p>
     <!-- <a href="/static/tags/{{ number }}_child.pdf" download>Child's Ticket</a><br>
     <a href="/static/tags/{{ number }}_parent.pdf" download>Parent's Ticket</a> -->
-    <button onclick="openPrintWindow('{{ url_for(',print_labels,', number=number) }}')">Print Labels</button>
+    <button onclick="openPrintWindow('{{ url_for('print_labels', number=number) }}')">Print Labels</button>
 </body>
 
 <script>
